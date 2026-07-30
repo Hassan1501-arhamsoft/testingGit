@@ -21,9 +21,30 @@ const userSchema = new mongoose.Schema(
       required: [true, "Password is required"],
       minlength: 6,
     },
+
     profileImage: {
       type: String,
       default: "",
+    },
+
+    // User Role
+    role: {
+      type: String,
+      enum: ["admin", "user"],
+      default: "user",
+    },
+
+    // Feature Permissions
+    permissions: {
+      todo: {
+        type: Boolean,
+        default: false,
+      },
+
+      weather: {
+        type: Boolean,
+        default: false,
+      },
     },
   },
   {

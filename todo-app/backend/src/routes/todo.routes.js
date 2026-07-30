@@ -15,9 +15,10 @@ import {
   validateTaskMiddleware,
   validateTaskIdMiddleware,
 } from "../middleware/validation.middleware.js";
-
+import { checkTodoPermission } from "../middleware/permission.middleware.js";
 const router = Router();
 router.use(protect);
+router.use(checkTodoPermission);
 // Create Todo
 router.post(
   "/todos",

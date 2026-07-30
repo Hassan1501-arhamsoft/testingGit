@@ -9,15 +9,13 @@ export const registerUser = async (userData) => {
 
   // Check if email already exists
   const existingUser = await User.findOne({ email });
- 
-  
+
   if (existingUser) {
     throw new Error("User already exists");
   }
 
   // Generate Salt
   const salt = await bcrypt.genSalt(10);
-  
 
   // Hash Password
   const hashedPassword = await bcrypt.hash(password, salt);
@@ -27,6 +25,15 @@ export const registerUser = async (userData) => {
     name,
     email,
     password: hashedPassword,
+
+    // Default Role
+    role: "user",
+
+    // Default Permissions
+    permissions: {
+      todo: false,
+      weather: false,
+    },
   });
 
   return user;
@@ -44,10 +51,7 @@ export const loginUser = async (userData) => {
   }
 
   // Compare Password
-  const isMatch = await bcrypt.compare(
-    password,
-    user.password
-  );
+  const isMatch = await bcrypt.compare(password, user.password);
 
   if (!isMatch) {
     throw new Error("Invalid email or password");
@@ -57,6 +61,8 @@ export const loginUser = async (userData) => {
   const token = jwt.sign(
     {
       id: user._id,
+      role: user.role,
+      permissions: user.permissions,
     },
     process.env.JWT_SECRET,
     {
@@ -70,6 +76,8 @@ export const loginUser = async (userData) => {
       id: user._id,
       name: user.name,
       email: user.email,
+      role: user.role,
+      permissions: user.permissions,
     },
   };
 };

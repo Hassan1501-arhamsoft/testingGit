@@ -4,14 +4,13 @@ import "../style/DashboardPage.css";
 function DashboardPage() {
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    // Remove JWT token
-    localStorage.removeItem("token");
+  // Logged-in user
+  const user = JSON.parse(localStorage.getItem("user"));
 
-    // Optional: Remove user data if you stored it
+  const handleLogout = () => {
+    localStorage.removeItem("token");
     localStorage.removeItem("user");
 
-    // Redirect to login page
     navigate("/login");
   };
 
@@ -19,41 +18,61 @@ function DashboardPage() {
     <div className="dashboard">
       <div className="dashboard-header">
 
-      <button
-            className="dashboard-btn"
-            onClick={() => navigate("/profile")}
-          >
-            👨🏻‍💼 Profile
-          </button>
+        {/* Profile Button */}
+        <button
+          className="dashboard-btn"
+          onClick={() => navigate("/profile")}
+        >
+          👨🏻‍💼 Profile
+        </button>
 
+        {/* Admin Button */}
+        {user?.role === "admin" && (
           <button
-            className="dashboard-btn logout-btn"
-            onClick={handleLogout}
-            >
-            🚪 Logout
+            className="dashboard-btn"
+            onClick={() => navigate("/admin")}
+          >
+            👑 Admin
           </button>
-            </div>
+        )}
+
+        {/* Logout */}
+        <button
+          className="dashboard-btn logout-btn"
+          onClick={handleLogout}
+        >
+          🚪 Logout
+        </button>
+
+      </div>
+
       <div className="dashboard-card">
         <h1>Productivity Dashboard</h1>
 
         <p>Select a feature to continue</p>
 
         <div className="dashboard-buttons">
-          <button
-            className="dashboard-btn"
-            onClick={() => navigate("/todo")}
-          >
-            📝 Todo App
-          </button>
 
-          <button
-            className="dashboard-btn"
-            onClick={() => navigate("/weather")}
-          >
-            🌤 Weather App
-          </button>
+          {/* Todo Button */}
+          {user?.permissions?.todo && (
+            <button
+              className="dashboard-btn"
+              onClick={() => navigate("/todo")}
+            >
+              📝 Todo App
+            </button>
+          )}
 
-          
+          {/* Weather Button */}
+          {user?.permissions?.weather && (
+            <button
+              className="dashboard-btn"
+              onClick={() => navigate("/weather")}
+            >
+              🌤 Weather App
+            </button>
+          )}
+
         </div>
       </div>
     </div>

@@ -9,7 +9,9 @@ import WeatherPage from "../features/weather/page/WeatherPage";
 import ProfilePage from "../features/profile/pages/ProfilePage";
 
 import ProtectedRoute from "./ProtectedRoute";
-
+import AdminPage from "../features/admin/pages/AdminPage";
+import AdminRoute from "./AdminRoute";
+import PermissionRoute from "./PermissionRoute";
 function AppRoutes() {
   return (
     <Routes>
@@ -22,7 +24,14 @@ function AppRoutes() {
       {/* Public Routes */}
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
-
+      <Route
+      path="/admin"
+      element={
+        <AdminRoute>
+          <AdminPage />
+        </AdminRoute>
+      }
+      />
       {/* Protected Routes */}
       <Route
         path="/dashboard"
@@ -34,22 +43,26 @@ function AppRoutes() {
       />
 
       <Route
-        path="/todo"
-        element={
-          <ProtectedRoute>
-            <TodoPage />
-          </ProtectedRoute>
-        }
-      />
+  path="/todo"
+  element={
+    <ProtectedRoute>
+      <PermissionRoute permission="todo">
+        <TodoPage />
+      </PermissionRoute>
+    </ProtectedRoute>
+  }
+/>
 
       <Route
-        path="/weather"
-        element={
-          <ProtectedRoute>
-            <WeatherPage />
-          </ProtectedRoute>
-        }
-      />
+  path="/weather"
+  element={
+    <ProtectedRoute>
+      <PermissionRoute permission="weather">
+        <WeatherPage />
+      </PermissionRoute>
+    </ProtectedRoute>
+  }
+/>
 
       <Route
         path="/profile"

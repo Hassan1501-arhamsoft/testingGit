@@ -21,27 +21,35 @@ function useAuth() {
   };
 
   // Login
-  const login = async (userData) => {
-    try {
-      setLoading(true);
+// Login
+const login = async (userData) => {
+  try {
+    setLoading(true);
 
-      const response = await authService.login(userData);
+    const response = await authService.login(userData);
 
-      // Save JWT Token
-      localStorage.setItem("token", response.data.token);
+    // Save JWT Token
+    localStorage.setItem("token", response.data.token);
 
-      return response;
-    // eslint-disable-next-line no-useless-catch
-    } catch (error) {
-      throw error;
-    } finally {
-      setLoading(false);
-    }
-  };
+    // Save User
+    localStorage.setItem(
+      "user",
+      JSON.stringify(response.data.user)
+    );
+
+    return response;
+  // eslint-disable-next-line no-useless-catch
+  } catch (error) {
+    throw error;
+  } finally {
+    setLoading(false);
+  }
+};
 
   // Logout
   const logout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
   };
 
   // Check Login Status
