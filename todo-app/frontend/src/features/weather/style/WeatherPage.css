@@ -1,0 +1,11 @@
+.weather-page{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 40px;
+}
+.back-button{
+    margin-bottom: 20px;
+    text-align: center;
+}

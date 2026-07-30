@@ -1,0 +1,65 @@
+/* Full Page */
+.login-container {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f4f7fb;
+  padding: 20px;
+}
+
+/* Card */
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  background: #fff;
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading */
+.login-card h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.login-card p {
+  text-align: center;
+  color: #777;
+  margin-bottom: 25px;
+}
+
+/* Form */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Buttons */
+.login-form button {
+  width: 100%;
+}
+
+/* Register Button */
+.register-btn {
+  background: transparent;
+  color: #0d6efd;
+  border: 2px solid #0d6efd;
+  margin-top: 8px;
+  transition: all 0.3s ease;
+}
+
+.register-btn:hover {
+  background: #0d6efd;
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .login-card {
+    padding: 25px;
+  }
+}
