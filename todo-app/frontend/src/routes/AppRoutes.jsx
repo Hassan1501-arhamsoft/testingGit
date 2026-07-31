@@ -25,12 +25,12 @@ function AppRoutes() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route
-      path="/admin"
-      element={
-        <AdminRoute>
-          <AdminPage />
-        </AdminRoute>
-      }
+        path="/admin"
+        element={
+          <AdminRoute>
+            <AdminPage />
+          </AdminRoute>
+        }
       />
       {/* Protected Routes */}
       <Route
@@ -43,26 +43,26 @@ function AppRoutes() {
       />
 
       <Route
-  path="/todo"
-  element={
-    <ProtectedRoute>
-      <PermissionRoute permission="todo">
-        <TodoPage />
-      </PermissionRoute>
-    </ProtectedRoute>
-  }
-/>
+        path="/todo"
+        element={
+          <ProtectedRoute>
+            <PermissionRoute permission="todo">
+              <TodoPage />
+            </PermissionRoute>
+          </ProtectedRoute>
+        }
+      />
 
       <Route
-  path="/weather"
-  element={
-    <ProtectedRoute>
-      <PermissionRoute permission="weather">
-        <WeatherPage />
-      </PermissionRoute>
-    </ProtectedRoute>
-  }
-/>
+        path="/weather"
+        element={
+          <ProtectedRoute>
+            <PermissionRoute permission="weather">
+              <WeatherPage />
+            </PermissionRoute>
+          </ProtectedRoute>
+        }
+      />
 
       <Route
         path="/profile"

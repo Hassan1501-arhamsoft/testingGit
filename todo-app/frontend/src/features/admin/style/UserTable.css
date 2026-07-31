@@ -1,0 +1,93 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 25px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+thead {
+  background-color: #2563eb;
+  color: white;
+}
+
+thead th {
+  padding: 15px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+tbody td {
+  padding: 14px;
+  text-align: center;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+  color: #374151;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+tbody tr:hover {
+  background-color: #eaf2ff;
+  transition: 0.3s ease;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Permission Select */
+tbody select {
+  padding: 8px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+tbody select:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+/* Buttons inside table */
+tbody button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background: #2563eb;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+tbody button:hover {
+  background: #1d4ed8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  thead th,
+  tbody td {
+    padding: 12px;
+    font-size: 13px;
+  }
+
+  tbody button {
+    padding: 7px 12px;
+    font-size: 13px;
+  }
+}

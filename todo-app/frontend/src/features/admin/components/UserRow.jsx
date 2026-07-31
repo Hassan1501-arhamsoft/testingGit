@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import "../style/UserRow.css";
 function UserRow({ user, updatePermissions }) {
   const [permissions, setPermissions] = useState(user.permissions);
 

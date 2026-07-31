@@ -1,0 +1,34 @@
+/* Checkbox Styling */
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #2563eb;
+  transform: scale(1.1);
+}
+
+/* Save Button */
+.user-save-btn {
+  padding: 8px 18px;
+  background-color: #16a34a;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.user-save-btn:hover {
+  background-color: #15803d;
+}
+
+.user-save-btn:active {
+  transform: scale(0.96);
+}
+
+.user-save-btn:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}

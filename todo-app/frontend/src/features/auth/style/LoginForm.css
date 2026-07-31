@@ -56,7 +56,24 @@
   background: #0d6efd;
   color: white;
 }
+.password-input-container {
+  position: relative;
+  width: 100%;
+}
 
+.password-toggle {
+  position: absolute;
+  top: 55%;
+  right: -5px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #666;
+  font-size: 18px;
+}
+
+.password-toggle:hover {
+  color: #000;
+}
 /* Responsive */
 @media (max-width: 480px) {
   .login-card {

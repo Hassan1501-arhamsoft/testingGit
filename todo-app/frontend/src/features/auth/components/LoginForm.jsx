@@ -4,7 +4,9 @@ import Button from "../../../components/common/Button/Button";
 import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom"; 
 import '../style/LoginForm.css'
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 function LoginForm() {
+  const [showPassword, setShowPassword] = useState(false);
   const { login, loading } = useAuth();
 const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -53,13 +55,22 @@ const navigate = useNavigate();
           onChange={handleChange}
         />
 
-        <Input
-          name="password"
-          type="password"
-          placeholder="Enter your password"
-          value={formData.password}
-          onChange={handleChange}
-        />
+        <div className="password-input-container">
+  <Input
+    name="password"
+    type={showPassword ? "text" : "password"}
+    placeholder="Enter your password"
+    value={formData.password}
+    onChange={handleChange}
+  />
+
+  <span
+    className="password-toggle"
+    onClick={() => setShowPassword(!showPassword)}
+  >
+    {showPassword ? <FaEyeSlash /> : <FaEye />}
+  </span>
+</div>
 
         <Button type="submit" disabled={loading}>
           {loading ? "Logging in..." : "Login"}

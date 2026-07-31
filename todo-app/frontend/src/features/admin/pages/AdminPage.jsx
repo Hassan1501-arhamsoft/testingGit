@@ -2,6 +2,7 @@ import useAdmin from "../hooks/useAdmin";
 import UserTable from "../components/UserTable";
 import Button from "../../../components/common/Button/Button";
 import { useNavigate } from "react-router-dom";
+import '../style/AdminPage.css';
 function AdminPage() {
     const navigate = useNavigate();
   const {

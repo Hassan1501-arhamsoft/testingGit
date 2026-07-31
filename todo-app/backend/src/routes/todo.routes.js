@@ -21,27 +21,27 @@ router.use(protect);
 router.use(checkTodoPermission);
 // Create Todo
 router.post(
-  "/todos",
+  "/",
   validateTaskMiddleware,
   createTodo
 );
 
 // Get All Todos
 router.get(
-  "/todos",
+  "/",
   getAllTodos
 );
 
 // Get Todo By ID
 router.get(
-  "/todos/:id",
+  "/:id",
   validateTaskIdMiddleware,
   getTodoById
 );
 
 // Update Todo
 router.put(
-  "/todos/:id",
+  "/:id",
   validateTaskIdMiddleware,
   validateTaskMiddleware,
   updateTodo
@@ -49,14 +49,14 @@ router.put(
 
 // Complete Todo
 router.patch(
-  "/todos/:id/complete",
+  "/:id/complete",
   validateTaskIdMiddleware,
   completeTodo
 );
 
 // Delete Todo
 router.delete(
-  "/todos/:id",
+  "/:id",
   validateTaskIdMiddleware,
   deleteTodo
 );

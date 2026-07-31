@@ -1,5 +1,5 @@
 import UserRow from "./UserRow";
-
+import "../style/UserTable.css";
 function UserTable({ users, updatePermissions }) {
   return (
     <table>

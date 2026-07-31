@@ -4,7 +4,10 @@ import Button from "../../../components/common/Button/Button";
 import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom"; 
 import '../style/RegisterForm.css'
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 function RegisterForm() {
+  const [showPassword, setShowPassword] = useState(false);
+const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const { register, loading } = useAuth();
 const navigate = useNavigate();
 
@@ -74,21 +77,45 @@ const navigate = useNavigate();
           onChange={handleChange}
         />
 
-        <Input
-          name="password"
-          type="password"
-          placeholder="Enter your password"
-          value={formData.password}
-          onChange={handleChange}
-        />
+        <div className="password-input-container">
+  <Input
+    name="password"
+    type={showPassword ? "text" : "password"}
+    placeholder="Enter your password"
+    value={formData.password}
+    onChange={handleChange}
+  />
 
-        <Input
-          name="confirmPassword"
-          type="password"
-          placeholder="Confirm password"
-          value={formData.confirmPassword}
-          onChange={handleChange}
-        />
+  <span
+    className="password-toggle"
+    onClick={() => setShowPassword(!showPassword)}
+  >
+    {showPassword ? <FaEyeSlash /> : <FaEye />}
+  </span>
+</div>
+
+        <div className="password-input-container">
+  <Input
+    name="confirmPassword"
+    type={showConfirmPassword ? "text" : "password"}
+    placeholder="Confirm password"
+    value={formData.confirmPassword}
+    onChange={handleChange}
+  />
+
+  <span
+    className="password-toggle"
+    onClick={() =>
+      setShowConfirmPassword(!showConfirmPassword)
+    }
+  >
+    {showConfirmPassword ? (
+      <FaEyeSlash />
+    ) : (
+      <FaEye />
+    )}
+  </span>
+</div>
 
         <Button type="submit" disabled={loading}>
           {loading ? "Registering..." : "Register"}
