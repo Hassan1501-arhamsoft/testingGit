@@ -4,7 +4,6 @@ import "../style/DashboardPage.css";
 function DashboardPage() {
   const navigate = useNavigate();
 
-  // Logged-in user
   const user = JSON.parse(localStorage.getItem("user"));
 
   const handleLogout = () => {
@@ -18,7 +17,6 @@ function DashboardPage() {
     <div className="dashboard">
       <div className="dashboard-header">
 
-        {/* Profile Button */}
         <button
           className="dashboard-btn"
           onClick={() => navigate("/profile")}
@@ -26,7 +24,6 @@ function DashboardPage() {
           👨🏻‍💼 Profile
         </button>
 
-        {/* Admin Button */}
         {user?.role === "admin" && (
           <button
             className="dashboard-btn"
@@ -36,7 +33,6 @@ function DashboardPage() {
           </button>
         )}
 
-        {/* Logout */}
         <button
           className="dashboard-btn logout-btn"
           onClick={handleLogout}
@@ -54,7 +50,7 @@ function DashboardPage() {
         <div className="dashboard-buttons">
 
           {/* Todo Button */}
-          {user?.permissions?.todo && (
+          {user?.permissions?.includes("todo") && (
             <button
               className="dashboard-btn"
               onClick={() => navigate("/todo")}
@@ -64,7 +60,7 @@ function DashboardPage() {
           )}
 
           {/* Weather Button */}
-          {user?.permissions?.weather && (
+          {user?.permissions?.includes("weather") && (
             <button
               className="dashboard-btn"
               onClick={() => navigate("/weather")}

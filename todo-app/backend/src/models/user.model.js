@@ -36,15 +36,8 @@ const userSchema = new mongoose.Schema(
 
     // Feature Permissions
     permissions: {
-      todo: {
-        type: Boolean,
-        default: false,
-      },
-
-      weather: {
-        type: Boolean,
-        default: false,
-      },
+      type: [String],
+      default: [],
     },
   },
   {

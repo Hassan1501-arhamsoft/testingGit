@@ -9,7 +9,7 @@ function PermissionRoute({ permission, children }) {
   }
 
   // User doesn't have permission
-  if (!user.permissions?.[permission]) {
+  if (!user.permissions?.includes(permission)) {
     return <Navigate to="/dashboard" replace />;
   }
 

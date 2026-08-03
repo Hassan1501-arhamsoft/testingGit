@@ -1,16 +1,24 @@
 import { useState } from "react";
 import "../style/UserRow.css";
+
 function UserRow({ user, updatePermissions }) {
-  const [permissions, setPermissions] = useState(user.permissions);
+  const [permissions, setPermissions] = useState(
+    user.permissions || []
+  );
 
   // Handle Checkbox Change
   const handleChange = (e) => {
     const { name, checked } = e.target;
 
-    setPermissions((prev) => ({
-      ...prev,
-      [name]: checked,
-    }));
+    if (checked) {
+      // Add permission
+      setPermissions((prev) => [...prev, name]);
+    } else {
+      // Remove permission
+      setPermissions((prev) =>
+        prev.filter((permission) => permission !== name)
+      );
+    }
   };
 
   // Save Permissions
@@ -30,7 +38,7 @@ function UserRow({ user, updatePermissions }) {
         <input
           type="checkbox"
           name="todo"
-          checked={permissions.todo}
+          checked={permissions.includes("todo")}
           onChange={handleChange}
         />
       </td>
@@ -39,13 +47,16 @@ function UserRow({ user, updatePermissions }) {
         <input
           type="checkbox"
           name="weather"
-          checked={permissions.weather}
+          checked={permissions.includes("weather")}
           onChange={handleChange}
         />
       </td>
 
       <td>
-        <button onClick={handleSave}>
+        <button
+          className="user-save-btn"
+          onClick={handleSave}
+        >
           Save
         </button>
       </td>

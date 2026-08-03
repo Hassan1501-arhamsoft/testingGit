@@ -6,6 +6,7 @@ function Input({
   value,
   onChange,
   placeholder,
+  autoComplete,
 }) {
   return (
     <input
@@ -15,6 +16,7 @@ function Input({
       value={value}
       onChange={onChange}
       placeholder={placeholder}
+      autoComplete={autoComplete}
     />
   );
 }

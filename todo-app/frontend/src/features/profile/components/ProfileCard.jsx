@@ -18,6 +18,8 @@ function ProfileCard({ profile }) {
       <h2>{profile.name}</h2>
 
       <p>{profile.email}</p>
+      <p>{profile.role}</p>
+
     </div>
   );
 }

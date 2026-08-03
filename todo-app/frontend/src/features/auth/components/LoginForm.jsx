@@ -62,6 +62,7 @@ const navigate = useNavigate();
     placeholder="Enter your password"
     value={formData.password}
     onChange={handleChange}
+    autoComplete="current-password"
   />
 
   <span

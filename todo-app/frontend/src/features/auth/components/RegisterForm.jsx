@@ -84,6 +84,7 @@ const navigate = useNavigate();
     placeholder="Enter your password"
     value={formData.password}
     onChange={handleChange}
+    autoComplete="new-password"
   />
 
   <span
@@ -101,6 +102,7 @@ const navigate = useNavigate();
     placeholder="Confirm password"
     value={formData.confirmPassword}
     onChange={handleChange}
+    autoComplete="new-password"
   />
 
   <span

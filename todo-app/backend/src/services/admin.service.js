@@ -12,6 +12,11 @@ export const updateUserPermissions = async (
   userId,
   permissions
 ) => {
+  // Ensure permissions is always an array
+  if (!Array.isArray(permissions)) {
+    throw new Error("Permissions must be an array.");
+  }
+
   const updatedUser = await User.findByIdAndUpdate(
     userId,
     {
@@ -24,7 +29,7 @@ export const updateUserPermissions = async (
   ).select("-password");
 
   if (!updatedUser) {
-    throw new Error("User not found");
+    throw new Error("User not found.");
   }
 
   return updatedUser;

@@ -1,7 +1,6 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import User from "../models/user.model.js";
-import { ERROR_MESSAGES } from "../utils/constants.js";
 
 // Register User
 export const registerUser = async (userData) => {
@@ -30,10 +29,9 @@ export const registerUser = async (userData) => {
     role: "user",
 
     // Default Permissions
-    permissions: {
-      todo: false,
-      weather: false,
-    },
+    permissions: [],
+    // Example:
+    // permissions: ["todo"]
   });
 
   return user;

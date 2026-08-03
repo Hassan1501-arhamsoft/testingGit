@@ -1,7 +1,6 @@
 import { Router } from "express";
 import { protect } from "../middleware/auth.middleware.js";
 
-
 import {
   createTodo,
   getAllTodos,
@@ -15,10 +14,17 @@ import {
   validateTaskMiddleware,
   validateTaskIdMiddleware,
 } from "../middleware/validation.middleware.js";
-import { checkTodoPermission } from "../middleware/permission.middleware.js";
+
+import { checkPermission } from "../middleware/permission.middleware.js";
+
 const router = Router();
+
+// Authentication
 router.use(protect);
-router.use(checkTodoPermission);
+
+// Todo Permission
+router.use(checkPermission("todo"));
+
 // Create Todo
 router.post(
   "/",
